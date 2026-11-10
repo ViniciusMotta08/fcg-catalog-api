@@ -1,0 +1,13 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.vscode/
+logs/
+TestResults/
+*.swp
+## Segredos locais (nunca versionar valores reais)
+*.local.json
+.env

@@ -1,0 +1,24 @@
+# Configurações NÃO sensíveis do CatalogAPI.
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: catalog-api-config
+  namespace: fcg
+  labels:
+    app.kubernetes.io/name: catalog-api
+    app.kubernetes.io/part-of: fiap-cloud-games
+data:
+  ASPNETCORE_ENVIRONMENT: "Production"
+  # Broker acessado pelo nome do Service do Kubernetes
+  RabbitMq__Host: "rabbitmq"
+  RabbitMq__Porta: "5672"
+  RabbitMq__VirtualHost: "/"
+  RabbitMq__Exchange: "fcg.events"
+  RabbitMq__DeadLetterExchange: "fcg.events.dlx"
+  RabbitMq__PrefetchCount: "10"
+  # Filas consumidas por este serviço
+  RabbitMq__Filas__PaymentProcessed: "catalog.payment-processed"
+  Jwt__Issuer: "FCG.UsersApi"
+  Jwt__Audience: "FCG.Clientes"
+  # Cria/atualiza o schema do banco na subida do pod (não insere dados)
+  Banco__CriarEstruturaAutomaticamente: "true"
